@@ -52,11 +52,12 @@ spec:
       image: python:3.9-slim
       workingDir: $(workspaces.source.path)
       securityContext:
-        runAsNonRoot: {placeholder}
-        runAsUser: {placeholder}
+        runAsNonRoot: false
+        runAsUser: 0
       script: |
         #!/bin/bash
         set -e
         python -m pip install --upgrade pip wheel
         pip install -r requirements.txt
         nosetests $(params.args)
+
